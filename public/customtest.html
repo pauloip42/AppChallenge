@@ -237,41 +237,47 @@ function initUI(){
 <h1>LibreSpeed Example</h1>
 <div id="testWrapper">
 	
-	<div> 
-		Selecione o tempo de cada teste
-	</div>
 	<div>
-		<input type="radio" name="testTime" value="10" onclick="setp('10')" class="checkmark" id="optionsRadio1">
+
+        <div> 
+            Selecione o tempo de Download
+        </div>
+
+		<input type="radio" name="testTime" value="10" onclick="setp('dl: 10')" id="optionsRadio1">
 		<label for="tensec">10s</label>
+        
+		<input type="radio" name="testTime" value="15" onclick="setp('dl: 15')" class="checkmark" id="optionsRadio1">
+		<label for="tensec">15s</label>
 		
-		<input type="radio" name="testTime" value="20" onclick="setp('20')">
+		<input type="radio" name="testTime" value="20" onclick="setp('dl: 20')">
 		<label for="tensec">20s</label>
 		
-		<input type="radio" name="testTime" value="30" onclick="setp('30')">
+		<input type="radio" name="testTime" value="30" onclick="setp('dl: 30')">
 		<label for="tensec">30s</label>
 		
-		<input type="radio" name="testTime" value="60" onclick="setp('60')">
+		<input type="radio" name="testTime" value="60" onclick="setp('dl: 60')">
 		<label for="tensec">60s</label>
+
+
+
+
+
 	<script>
-		function setp(p){
-			s.setParameter("time_dl_max", p);
+		function setp(dl, ul, ping, jitt){
+			s.setParameter("time_dl_max", dl);
+            
+		//	s.setParameter("time_dl_max", ul);
+            
+		//	s.setParameter("time_dl_max", ping);
+            
+		//	s.setParameter("time_dl_max", jitt);
 		}
 	</script>
 	</div>
 	
 
-	<div id="startStopBtn" class="pd" onclick="startStop()"></div>
+	<div id="startStopBtn" onclick="startStop()"></div>
 	<br>
-
-	<div>
-		<p>Ou</p>
-	</div>
-
-	
-	<a href="customtest.html">
-		<button type="button" class="btn btn-warning">Faça um teste personalizado</button>
-	</a>
-
 
 	<div id="test">
         <div class="testGroup">
