@@ -238,7 +238,7 @@ function initUI(){
 <div id="testWrapper">
 	
 	<div>
-			<div> 
+			<div class="pd"> 
 				Selecione o tempo do teste de Download
 			</div>
 			<div>
@@ -265,7 +265,7 @@ function initUI(){
 				}
 			</script>
 
-			<div> 
+            <div class="pd"> 
 				Selecione o tempo do teste de Upload
 			</div>
 			<div>
@@ -292,7 +292,7 @@ function initUI(){
 				}
 			</script>	
 
-		<div> 
+        <div class="pd"> 
 			Selecione a "quantidade de pings"
 		</div>
 		<div>
@@ -319,16 +319,6 @@ function initUI(){
 
 	<div id="startStopBtn" class="pd" onclick="startStop()"></div>
 	<br>
-
-	<div>
-		<p>Ou</p>
-	</div>
-
-	
-	<a href="customtest.html">
-		<button type="button" class="btn btn-warning">Faça um teste personalizado</button>
-	</a>
-
 
 	<div id="test">
         <div class="testGroup">
@@ -361,16 +351,44 @@ function initUI(){
 			<span id="ip"></span>
 		</div>
 
-		<button type="button" onclick="myFunction()" class="btn btn-success pd">Save Test</button>
+		<button type="button" onclick="myFunction()" class="btn btn-success pd">Salvar Teste</button>
 
-		<button type="button" onclick="tableStart()" class="btn btn-primary pd">Show History</button>
+		<button type="button" onclick="tableStart()" class="btn btn-primary pd">Ver Histórico</button>
+        <br>
 
-		<br>
+        <a href="index.html">
+            <button type="button" class="btn btn-warning pd">Fazer teste padrão</button>
+        </a>
 
+		
+        
+
+	<!--TABELA ADICIONADA-->
+	<div>
+
+		<table class="rtable" id = "addTableData">
+		<thead>
+			<tr>
+			<th>IP</th>
+			<th>Dowload</th>
+			<th>Upload</td>
+			<th>Ping</th>
+			<th>Jitter</th>
+			</tr>
+		</thead>
+		
+		</table>
+
+	</div>
+
+</div>
 		<a href="fullhistory.html">
-			<button type="button" class="btn btn-warning pd">Show Full History</button>
+			<button type="button" class="btn btn-warning pd">Ver Histórico Completo</button>
 		</a>
 	</div>
+
+    
+	<a href="https://github.com/librespeed/speedtest">Source code</a>
 
 	<script>
 		var testHistory = [];
@@ -450,27 +468,6 @@ function initUI(){
 	}
 </script>	
 
-
-	<!--TABELA ADICIONADA-->
-	<div>
-
-		<table class="rtable" id = "addTableData">
-		<thead>
-			<tr>
-			<th>IP</th>
-			<th>Dowload</th>
-			<th>Upload</td>
-			<th>Ping</th>
-			<th>Jitter</th>
-			</tr>
-		</thead>
-		
-		</table>
-
-	</div>
-
-	<a href="https://github.com/librespeed/speedtest">Source code</a>
-</div>
 
 
 <script type="text/javascript">setTimeout(function(){initUI()},100);</script>
