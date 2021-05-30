@@ -8,6 +8,9 @@
 <!--ESTILO-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css">
 <link rel="stylesheet" href="tablestyle.css">
+<link rel="stylesheet" href="button.css">
+<link rel="stylesheet" href="radio.css">
+
 <script type="text/javascript" src="speedtest.js"></script>
 <script type="text/javascript">
 
@@ -238,7 +241,7 @@ function initUI(){
 		Selecione o tempo de cada teste
 	</div>
 	<div>
-		<input type="radio" name="testTime" value="10" onclick="setp('10')">
+		<input type="radio" name="testTime" value="10" onclick="setp('10')" class="checkmark" id="optionsRadio1">
 		<label for="tensec">10s</label>
 		
 		<input type="radio" name="testTime" value="20" onclick="setp('20')">
@@ -289,14 +292,14 @@ function initUI(){
 			<span id="ip"></span>
 		</div>
 
-		<button type="button" onclick="myFunction()">Save Test</button>
+		<button type="button" onclick="myFunction()" class="btn btn-success pd">Save Test</button>
 
-		<button type="button" onclick="tableStart()">Show History</button>
+		<button type="button" onclick="tableStart()" class="btn btn-primary pd">Show History</button>
 
 		<br>
 
 		<a href="fullhistory.html">
-			<button type="button">Show Full History</button>
+			<button type="button" class="btn btn-warning pd">Show Full History</button>
 		</a>
 	</div>
 
