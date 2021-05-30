@@ -7,6 +7,7 @@
 
 <!--ESTILO-->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css">
+<link rel="stylesheet" href="tablestyle.css">
 <script type="text/javascript" src="speedtest.js"></script>
 <script type="text/javascript">
 
@@ -226,123 +227,13 @@ function initUI(){
 		}
 	}
 </style>
-
-
-<style>
-	
-	/*!
-	// ESTILO DA TABELA
-	*/
-	
-	.rtable {
-	  /*!
-	  // IE needs inline-block to position scrolling shadows otherwise use:
-	  // display: block;
-	  // max-width: min-content;
-	  */
-	  display: inline-block;
-	  vertical-align: top;
-	  max-width: 100%;
-	  
-	  overflow-x: auto;
-	  white-space: nowrap;
-	
-	  border-collapse: collapse;
-	  border-spacing: 0;
-	}
-	
-	.rtable,
-	.rtable--flip tbody {
-	  -webkit-overflow-scrolling: touch;
-	  
-	  background: radial-gradient(left, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 0 center,
-				  radial-gradient(right, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 100% center;
-	  background-size: 0.1em 100%, 0.1em 100%;
-	  background-attachment: scroll, scroll;
-	  background-repeat: no-repeat;
-	}
-	
-	.rtable td:first-child,
-	.rtable--flip tbody tr:first-child {
-	  background-image: linear-gradient(to right, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
-	  background-repeat: no-repeat;
-	  background-size: 0.1em 100%;
-	}
-	
-	.rtable td:last-child,
-	.rtable--flip tbody tr:last-child {
-	  background-image: linear-gradient(to left, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
-	  background-repeat: no-repeat;
-	  background-position: 100% 0;
-	  background-size: 0.1em 100%;
-	}
-	
-	.rtable th {
-	  font-size: 0.6em;
-	  text-align: left;
-	  text-transform: uppercase;
-	  background: #f2f0e6;
-	}
-	
-	.rtable th,
-	.rtable td {
-	  padding: 0.6em 0.8em;
-	  border: 0.1em solid #d9d7ce;
-	}
-	
-	.rtable--flip {
-	  display: flex;
-	  overflow: hidden;
-	  background: none;
-	}
-	
-	.rtable--flip thead {
-	  display: flex;
-	  flex-shrink: 0;
-	  min-width: min-content;
-	}
-	
-	.rtable--flip tbody {
-	  display: flex;
-	  position: relative;
-	  overflow-x: auto;
-	  overflow-y: hidden;
-	}
-	
-	.rtable--flip tr {
-	  display: flex;
-	  flex-direction: column;
-	  min-width: min-content;
-	  flex-shrink: 0;
-	}
-	
-	.rtable--flip td,
-	.rtable--flip th {
-	  display: block;
-	}
-	
-	.rtable--flip td {
-	  background-image: none !important;
-	  
-	  border-left: 0;
-	}
-	.rtable--flip th:not(:last-child),
-	.rtable--flip td:not(:last-child) {
-	  border-bottom: 0;
-	}
-	
-	table {
-	  margin-bottom: 0.3em;
-	}
-	
-	</style>
 	
 <title>LibreSpeed Example</title>
 </head>
 <body>
 <h1>LibreSpeed Example</h1>
 <div id="testWrapper">
-	<!--IMPLEMENTAR CHECKBOX-->
+	
 	<div> 
 		Selecione o tempo de cada teste
 	</div>
@@ -401,6 +292,12 @@ function initUI(){
 		<button type="button" onclick="myFunction()">Save Test</button>
 
 		<button type="button" onclick="tableStart()">Show History</button>
+
+		<br>
+
+		<a href="fullhistory.html">
+			<button type="button">Show Full History</button>
+		</a>
 	</div>
 
 	<script>
@@ -436,12 +333,11 @@ function initUI(){
 	
 	}
 
-//		console.log(testData);
 		testHistory.push(testData);
 		console.log(testHistory[0]);
 
 		var testHistoryJSON = JSON.stringify(testHistory);
-	//	localStorage.removeItem("table");
+	
 		localStorage.setItem("table", testHistoryJSON);
 		}
 	</script>
@@ -453,10 +349,10 @@ function initUI(){
 			if(JSON.parse(localStorage.getItem("table")) != null){
 				testHistory = Object.entries(JSON.parse(localStorage.getItem("table")));
 				
-			//	console.log(testHistory[1][1].ip);
+	
 				
 				var table = document.getElementById("addTableData");
-			//	console.log(testHistory[0]);
+		
 				if(testHistory.length < 10){
 					var x = testHistory.length
 				}else{
@@ -476,7 +372,7 @@ function initUI(){
 				cell3.innerHTML = testHistory[i][1].ulData;
 				cell4.innerHTML = testHistory[i][1].pingData;
 				cell5.innerHTML = testHistory[i][1].jitData;
-			//	console.log(testHistory[i][1].ip);
+			
 			}
 		}
 	}
@@ -496,18 +392,7 @@ function initUI(){
 			<th>Jitter</th>
 			</tr>
 		</thead>
-		<!--
-			OUTPUT EXAMPLE
-		<tbody>
-			<tr>
-			<td>177.70.131.246</td>
-			<td>9,562</td>
-			<td>68.81%</td>
-			<td>7,895</td>
-			<td>01:07</td>
-			</tr>
-		</tbody>
-		-->
+		
 		</table>
 
 	</div>
