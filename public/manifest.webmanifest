@@ -1,6 +1,6 @@
 {
-    "short_name": "stp",
-    "name": "Speed Test Personalizado",
+    "short_name": "STC",
+    "name": "Speed Test Customizado",
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#ffffff",
