@@ -1,0 +1,111 @@
+
+/*!
+// ESTILO DA TABELA
+*/
+
+thead{
+    text-decoration-color: #ffffff;
+}
+
+.ttable {
+  /*!
+  // IE needs inline-block to position scrolling shadows otherwise use:
+  // display: block;
+  // max-width: min-content;
+  */
+  display: inline-block;
+
+  margin-left: 15em;
+  margin-top: 5em;
+
+  
+  overflow-x: auto;
+  white-space: nowrap;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.ttable,
+.ttable--flip tbody {
+  -webkit-overflow-scrolling: touch;
+  
+  background: radial-gradient(left, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 0 center,
+              radial-gradient(right, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 100% center;
+  background-size: 10em 100%, 0.1em 100%;
+  background-attachment: scroll, scroll;
+  background-repeat: no-repeat;
+}
+
+.ttable td:first-child,
+.ttable--flip tbody tr:first-child {
+  background-image: linear-gradient(to right, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+  background-repeat: no-repeat;
+  background-size: 7em 100%;
+}
+
+.ttable td:last-child,
+.ttable--flip tbody tr:last-child {
+  background-image: linear-gradient(to left, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: 10em 100%;
+}
+
+.ttable th {
+  font-size: 2.5em;
+  text-align: left;
+  text-transform: uppercase;
+  background: #4d6cc0;
+}
+
+.ttable th,
+.ttable td {
+  padding: 1em 0.8em;
+  border: 0.1em solid #d9d7ce;
+}
+
+.ttable--flip {
+  display: flex;
+  overflow: hidden;
+  background: none;
+}
+
+.ttable--flip thead {
+  display: flex;
+  flex-shrink: 0;
+  min-width: min-content;
+}
+
+.ttable--flip tbody {
+  display: flex;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.ttable--flip tr {
+  display: flex;
+  flex-direction: column;
+  min-width: min-content;
+  flex-shrink: 0;
+}
+
+.ttable--flip td,
+.ttable--flip th {
+  display: block;
+}
+
+.ttable--flip td {
+  background-image: none !important;
+  
+  border-left: 0;
+}
+.ttable--flip th:not(:last-child),
+.ttable--flip td:not(:last-child) {
+  border-bottom: 0;
+}
+
+table {
+  margin-bottom: 0.3em;
+}
