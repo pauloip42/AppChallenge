@@ -4,11 +4,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
 <meta charset="UTF-8" />
 <link rel="shortcut icon" href="favicon.ico">
+
+<!--ESTILO-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css">
 <script type="text/javascript" src="speedtest.js"></script>
 <script type="text/javascript">
+
+
 function I(i){return document.getElementById(i);}
+
 //INITIALIZE SPEEDTEST
 var s=new Speedtest(); //create speedtest object
+
 
 var meterBk=/Trident.*rv:(\d+\.\d+)/i.test(navigator.userAgent)?"#EAEAEA":"#80808040";
 var dlColor="#6060AA",
@@ -108,6 +115,7 @@ function initUI(){
 	I("ip").textContent="";
 }
 </script>
+
 <style type="text/css">
 	html,body{
 		border:none; padding:0; margin:0;
@@ -218,11 +226,146 @@ function initUI(){
 		}
 	}
 </style>
+
+
+<style>
+	
+	/*!
+	// ESTILO DA TABELA
+	*/
+	
+	.rtable {
+	  /*!
+	  // IE needs inline-block to position scrolling shadows otherwise use:
+	  // display: block;
+	  // max-width: min-content;
+	  */
+	  display: inline-block;
+	  vertical-align: top;
+	  max-width: 100%;
+	  
+	  overflow-x: auto;
+	  white-space: nowrap;
+	
+	  border-collapse: collapse;
+	  border-spacing: 0;
+	}
+	
+	.rtable,
+	.rtable--flip tbody {
+	  -webkit-overflow-scrolling: touch;
+	  
+	  background: radial-gradient(left, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 0 center,
+				  radial-gradient(right, ellipse, rgba(0,0,0, .2) 0%, rgba(0,0,0, 0) 75%) 100% center;
+	  background-size: 0.1em 100%, 0.1em 100%;
+	  background-attachment: scroll, scroll;
+	  background-repeat: no-repeat;
+	}
+	
+	.rtable td:first-child,
+	.rtable--flip tbody tr:first-child {
+	  background-image: linear-gradient(to right, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+	  background-repeat: no-repeat;
+	  background-size: 0.1em 100%;
+	}
+	
+	.rtable td:last-child,
+	.rtable--flip tbody tr:last-child {
+	  background-image: linear-gradient(to left, rgba(255,255,255, 1) 50%, rgba(255,255,255, 0) 100%);
+	  background-repeat: no-repeat;
+	  background-position: 100% 0;
+	  background-size: 0.1em 100%;
+	}
+	
+	.rtable th {
+	  font-size: 0.6em;
+	  text-align: left;
+	  text-transform: uppercase;
+	  background: #f2f0e6;
+	}
+	
+	.rtable th,
+	.rtable td {
+	  padding: 0.6em 0.8em;
+	  border: 0.1em solid #d9d7ce;
+	}
+	
+	.rtable--flip {
+	  display: flex;
+	  overflow: hidden;
+	  background: none;
+	}
+	
+	.rtable--flip thead {
+	  display: flex;
+	  flex-shrink: 0;
+	  min-width: min-content;
+	}
+	
+	.rtable--flip tbody {
+	  display: flex;
+	  position: relative;
+	  overflow-x: auto;
+	  overflow-y: hidden;
+	}
+	
+	.rtable--flip tr {
+	  display: flex;
+	  flex-direction: column;
+	  min-width: min-content;
+	  flex-shrink: 0;
+	}
+	
+	.rtable--flip td,
+	.rtable--flip th {
+	  display: block;
+	}
+	
+	.rtable--flip td {
+	  background-image: none !important;
+	  
+	  border-left: 0;
+	}
+	.rtable--flip th:not(:last-child),
+	.rtable--flip td:not(:last-child) {
+	  border-bottom: 0;
+	}
+	
+	table {
+	  margin-bottom: 0.3em;
+	}
+	
+	</style>
+	
 <title>LibreSpeed Example</title>
 </head>
 <body>
 <h1>LibreSpeed Example</h1>
 <div id="testWrapper">
+	<!--IMPLEMENTAR CHECKBOX-->
+	<div> 
+		Selecione o tempo de cada teste
+	</div>
+	<div>
+		<input type="radio" name="testTime" value="10" onclick="setp('10')">
+		<label for="tensec">10s</label>
+		
+		<input type="radio" name="testTime" value="20" onclick="setp('20')">
+		<label for="tensec">20s</label>
+		
+		<input type="radio" name="testTime" value="30" onclick="setp('30')">
+		<label for="tensec">30s</label>
+		
+		<input type="radio" name="testTime" value="60" onclick="setp('60')">
+		<label for="tensec">60s</label>
+	<script>
+		function setp(p){
+			s.setParameter("time_dl_max", p);
+		}
+	</script>
+	</div>
+	
+
 	<div id="startStopBtn" onclick="startStop()"></div>
 	<div id="test">
         <div class="testGroup">
@@ -254,9 +397,126 @@ function initUI(){
 		<div id="ipArea">
 			<span id="ip"></span>
 		</div>
+
+		<button type="button" onclick="myFunction()">Save Test</button>
+
+		<button type="button" onclick="tableStart()">Show History</button>
 	</div>
+
+	<script>
+		var testHistory = [];
+
+		function myFunction() {
+		  var table = document.getElementById("addTableData");
+		  var row = table.insertRow(1);
+		  var cell1 = row.insertCell(0);
+		  var cell2 = row.insertCell(1);
+		  var cell3 = row.insertCell(2);
+		  var cell4 = row.insertCell(3);
+		  var cell5 = row.insertCell(4);
+
+		  
+		var testData = {
+				ip: I("ip").textContent.substr(0,14), 
+				dlData: I("dlText").textContent,
+				ulData: I("ulText").textContent,
+				pingData: I("pingText").textContent,
+				jitData: I("jitText").textContent,
+			}
+		//envia pra tabela		
+		cell1.innerHTML = testData.ip;
+		cell2.innerHTML = testData.dlData;
+		cell3.innerHTML = testData.ulData;
+		cell4.innerHTML = testData.pingData;
+		cell5.innerHTML = testData.jitData;
+
+	if(JSON.parse(localStorage.getItem("table")) != null){
+	
+		testHistory = JSON.parse(localStorage.getItem("table"));
+	
+	}
+
+//		console.log(testData);
+		testHistory.push(testData);
+		console.log(testHistory[0]);
+
+		var testHistoryJSON = JSON.stringify(testHistory);
+	//	localStorage.removeItem("table");
+		localStorage.setItem("table", testHistoryJSON);
+		}
+	</script>
+	
+<script>
+	var testHistory = [];
+	
+	function tableStart() {
+			if(JSON.parse(localStorage.getItem("table")) != null){
+				testHistory = Object.entries(JSON.parse(localStorage.getItem("table")));
+				
+				console.log(testHistory[1][1].ip);
+				
+				var table = document.getElementById("addTableData");
+			//	console.log(testHistory[0]);
+				if(testHistory.length < 10){
+					var x = testHistory.length
+				}else{
+					var x = 10
+				}
+				for(i = 0; i < x; i++){
+					
+				var row = table.insertRow(1);
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				var cell4 = row.insertCell(3);
+				var cell5 = row.insertCell(4);
+				
+				cell1.innerHTML = testHistory[i][1].ip;
+				cell2.innerHTML = testHistory[i][1].dlData;
+				cell3.innerHTML = testHistory[i][1].ulData;
+				cell4.innerHTML = testHistory[i][1].pingData;
+				cell5.innerHTML = testHistory[i][1].jitData;
+			//	console.log(testHistory[i][1].ip);
+			}
+		}
+	}
+</script>	
+
+
+	<!--TABELA ADICIONADA-->
+	<div>
+
+		<table class="rtable" id = "addTableData">
+		<thead>
+			<tr>
+			<th>IP</th>
+			<th>Dowload</th>
+			<th>Upload</td>
+			<th>Ping</th>
+			<th>Jitter</th>
+			</tr>
+		</thead>
+		<!--
+			OUTPUT EXAMPLE
+		<tbody>
+			<tr>
+			<td>177.70.131.246</td>
+			<td>9,562</td>
+			<td>68.81%</td>
+			<td>7,895</td>
+			<td>01:07</td>
+			</tr>
+		</tbody>
+		-->
+		</table>
+
+	</div>
+
 	<a href="https://github.com/librespeed/speedtest">Source code</a>
 </div>
+
+
 <script type="text/javascript">setTimeout(function(){initUI()},100);</script>
+
 </body>
 </html>
