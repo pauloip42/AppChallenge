@@ -241,22 +241,20 @@ function initUI(){
 		Selecione o tempo de Download
 	</div>
 	<div>
-		<input type="radio" name="testTime" value="10" onclick="setp('10')" class="checkmark" id="optionsRadio1">
+		<input type="radio" name="testTime" value="10" onclick="s.setParameter('time_dl_max', 10)">
 		<label for="tensec">10s</label>
 		
-		<input type="radio" name="testTime" value="20" onclick="setp('20')">
+		<input type="radio" name="testTime" value="15" onclick="s.setParameter('time_dl_max', 15)">
+		<label for="tensec">15s</label>
+
+		<input type="radio" name="testTime" value="20" onclick="s.setParameter('time_dl_max', 20)">
 		<label for="tensec">20s</label>
 		
-		<input type="radio" name="testTime" value="30" onclick="setp('30')">
+		<input type="radio" name="testTime" value="30" onclick="s.setParameter('time_dl_max', 30)">
 		<label for="tensec">30s</label>
 		
-		<input type="radio" name="testTime" value="60" onclick="setp('60')">
+		<input type="radio" name="testTime" value="60" onclick="s.setParameter('time_dl_max', 60)">
 		<label for="tensec">60s</label>
-	<script>
-		function setp(p){
-			s.setParameter("time_dl_max", p);
-		}
-	</script>
 	</div>
 	
 
