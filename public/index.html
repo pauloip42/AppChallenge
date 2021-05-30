@@ -253,9 +253,16 @@ function initUI(){
 		<input type="radio" name="testTime" value="30" onclick="s.setParameter(time_dl_max, 30)">
 		<label for="tensec">30s</label>
 		
-		<input type="radio" name="testTime" value="60" onclick="s.setParameter(time_dl_max, 60)">
+		<input type="radio" name="testTime" value="60" onclick="changetime(60)">
 		<label for="tensec">60s</label>
 	</div>
+
+	<script>
+		function changetime(dl){
+			s.setParameter(time_auto, false);
+			s.setParameter(time_dl_max, dl);
+		}
+	</script>
 	
 
 	<div id="startStopBtn" class="pd" onclick="startStop()"></div>
